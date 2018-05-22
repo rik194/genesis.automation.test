@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopJSRepos.Views.PullRequestsPage">
+    <ListView x:Name="PullRequests"
+              HasUnevenRows="True"
+            ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement">
+        <ListView.ItemTemplate>
+        <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding Title}" Style="{StaticResource titleStyle}" />
+                        <Label Text="{Binding Body}" />
+                    </StackLayout>
+                </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+
+  </ListView>
+</ContentPage>

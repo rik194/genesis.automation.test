@@ -1,15 +1,13 @@
-﻿using System;
-
-using TopJSRepos.Models;
+﻿using TopJSRepos.Models.Menu;
 
 namespace TopJSRepos.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public MenuItem Item { get; set; }
+        public ItemDetailViewModel(MenuItem item = null)
         {
-            Title = item?.Text;
+            Title = item?.Title;
             Item = item;
         }
     }

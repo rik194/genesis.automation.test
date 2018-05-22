@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopJSRepos.Views.RepositoriesPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Title="Repositories">
+  <StackLayout Padding="10">
+        <ListView x:Name="Repositories"
+            ItemsSource="{Binding Repositories}"
+            HasUnevenRows="True"
+            CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="5*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource titleStyle}" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" />
+                            <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
+                                <Label Text="{Binding ForksCount}" />
+                                <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center" 
+                                                            Source="fork.png">
+                                </ffimageloading:CachedImage>
+                                <Label Text="{Binding StarsCount}" />
+                                <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center" 
+                                                            Source="star.png">
+                                </ffimageloading:CachedImage>
+                            </StackLayout>
+                            <StackLayout Grid.RowSpan="3" Grid.Column="1" Orientation="Vertical" >
+                                <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center" 
+                                                            Source="{Binding Owner.AvatarUrl}">
+                                </ffimageloading:CachedImage>
+                                <Label Text="{Binding Owner.Username}" Style="{StaticResource usernameStyle}"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
